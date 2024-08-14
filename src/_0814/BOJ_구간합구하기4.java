@@ -18,14 +18,17 @@ public class BOJ_구간합구하기4 {
         int[] prefixSum = new int[N + 1];
 
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        // 입력
         for (int i = 0; i < N; i++) {
             numbers[i] = Integer.parseInt(st.nextToken());
         }
 
+        // 1. 누적 합 구하기
         for (int i = 1; i <= N; i++) {
             prefixSum[i] += numbers[i - 1] + prefixSum[i - 1];
         }
 
+        // 2. 구간 합 구하기
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine(), " ");
             int a = Integer.parseInt(st.nextToken());

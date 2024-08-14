@@ -32,7 +32,7 @@ public class BOJ_구간합구하기5 {
             }
         }
 
-        // 3. 누적 합 구하기, 시작 조건을 -1
+        // 3. 누적 합 구하기 (가로 값의 누적)
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine(), " ");
             int y1 = Integer.parseInt(st.nextToken()) - 1;
