@@ -14,7 +14,7 @@ public class No1_새로운불면증치료법 {
             int value = n;
             int[] arr = new int[10];
             int count = 0;
-
+q
             while (true) {
                 value = n * 2;
                 n *= count;
