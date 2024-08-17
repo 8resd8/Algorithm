@@ -19,7 +19,6 @@ public class No1_새로운불면증치료법 {
                 n *= count;
 //                System.out.println("value = " + value);
                 boolean check = true;
-
                 while (value > 0) {
                     int num = value % 10;
 
