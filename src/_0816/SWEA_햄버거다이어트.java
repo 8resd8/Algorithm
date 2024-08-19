@@ -43,17 +43,10 @@ public class SWEA_햄버거다이어트 {
     }
 
     private static void combination(int index, int totalCal, int totalFavorite) {
-//        if (totalCal > maxCal) return; // 최대 칼로리 이상일 때는 포함 X
+        if (totalCal > maxCal) return; // 최대 칼로리 이상일 때는 포함 X
 
         answer = Math.max(answer, totalFavorite); // 가능한 모든 조합의 최대 선호도 갱신
-        if (index < N) {
-            int[] ints = items.get(index);
-            for (int i = 0; i < ints.length; i++) {
-                System.out.println(ints[i]);
-            }
-        }
 
-        count++;
         for (int i = index; i < N; i++) {
             int[] item = items.get(i); // [0]: 선호도 [1]: 칼로리
             combination(i + 1, totalCal + item[1], totalFavorite + item[0]);
