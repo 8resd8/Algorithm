@@ -4,6 +4,8 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Scanner;
 
+// https://www.acmicpc.net/problem/1952
+
 public class 달팽이 {
     static int[] dx = {1, 0, -1, 0};
     static int[] dy = {0, 1, 0, -1};
