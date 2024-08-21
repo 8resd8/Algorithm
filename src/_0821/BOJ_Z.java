@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+// https://www.acmicpc.net/problem/1074
+
 public class BOJ_Z {
     static int count;
     public static void main(String[] args) throws IOException {

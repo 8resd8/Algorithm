@@ -74,7 +74,7 @@ public class SWEA_추억의2048게임 {
                 if (map[j][i] != 0) { // 숫자가 있으면
                     if (index > 0 && indexUsed[index - 1] && temp[index - 1] == map[j][i]) { // 같은 숫자가 있으면
                         temp[index - 1] *= 2; // 합치기 (2배)
-                        map[j][i] = 0;
+                        map[j][i] = 0; // 합친건 없애기
                         indexUsed[index - 1] = false; // 이미 더한 자리는 그만해
                     } else {
                         temp[index++] = map[j][i]; // 값이 다르면 다음 인덱스 쌓기
