@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+// https://www.acmicpc.net/problem/3109
+
 public class BOJ_빵집 {
     static char[][] map;
     static int[][] visited;
