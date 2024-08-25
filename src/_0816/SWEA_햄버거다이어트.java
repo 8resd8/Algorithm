@@ -22,7 +22,6 @@ public class SWEA_햄버거다이어트 {
 
             combination(0, 0, 0);
             System.out.printf("#%d %d\n", testCase, answer);
-            System.out.println("count = " + count);
         }
     }
 

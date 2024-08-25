@@ -29,13 +29,13 @@ public class SWEA_숫자만들기 {
         minResult = Integer.MAX_VALUE;
         maxResult = Integer.MIN_VALUE;
 
-        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        StringTokenizer st = new StringTokenizer(br.readLine());
         operatorCount = new int[4]; // + - * / 개수 저장
         for (int i = 0; i < 4; i++) {
             operatorCount[i] = Integer.parseInt(st.nextToken());
         }
 
-        st = new StringTokenizer(br.readLine(), " ");
+        st = new StringTokenizer(br.readLine());
         for (int i = 0; i < n; i++) {
             numbers[i] = Integer.parseInt(st.nextToken());
         }
@@ -53,6 +53,7 @@ public class SWEA_숫자만들기 {
             if (operatorCount[i] > 0) { // 연산기호 모두 뽑을 때까지
                 operatorCount[i]--;
 
+                // 연산자가 아닌 numbers의 index는 따로 매개변수로 설정
                 switch (i) {
                     case 0: // +
                         permutation(index + 1, sum + numbers[index]); // 0 + 1, 1 + 2...
