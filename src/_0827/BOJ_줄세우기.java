@@ -25,20 +25,19 @@ public class BOJ_줄세우기 {
             adj.add(new ArrayList<>());
         }
 
-        // 입력 (M번)
+        // 입력
         for (int i = 0; i < M; i++) {
             String[] input = br.readLine().split(" ");
             int a = Integer.parseInt(input[0]);
             int b = Integer.parseInt(input[1]);
             adj.get(a).add(b); // 그래프의 간선 연결시키기 a -> b로 가기때문에 b의 값을 증가
-//            adj.get(b).add(a); // 단방향 설정 (양방향 x)
             inDegree[b]++; // b의 진입차수를 늘려야한다. (a -> b)
         }
 
         // 진입차수가 0인 값 큐에 넣기
         Queue<Integer> queue = new ArrayDeque<>();
         for (int i = 1; i < N + 1; i++) { // 0은 사용하지 않고 1부터 N까지 사용
-            if (inDegree[i] == 0) { // a -> b, i를 큐에 넣음
+            if (inDegree[i] == 0) { // 진입차수가 0이면 큐에 넣음
                 queue.add(i);
             }
         }
@@ -49,9 +48,9 @@ public class BOJ_줄세우기 {
             int curNode = queue.poll(); // 큐에서 노드를 꺼내고
             result.add(curNode); // 결과 리스트에 추가
 
-            ArrayList<Integer> list = adj.get(curNode); // 현재 노드의 인접리스트 갖오기
+            ArrayList<Integer> list = adj.get(curNode); // 현재 노드의 인접리스트 가져오기
             for (Integer num : list) {
-                inDegree[num]--; // 해당하는 노드로 들어오는 간선 하나 제거
+                inDegree[num]--; // curNode랑 연결된 노드로 들어오는 간선 하나 제거
                 if (inDegree[num] == 0) { // 진입차수가 0이 되면 큐에 추가
                     queue.add(num);
                 }
@@ -59,8 +58,7 @@ public class BOJ_줄세우기 {
         }
 
         for (Integer node : result) {
-            // a가 b보다 앞에 온다는 조건만 만족한다면
-            // 위상 정렬은 여러 가지 가능한 정렬 결과를 얻을 수 있음
+            // a가 b보다 앞에 온다는 조건만 만족한다면 가능한 답은 여러 개
             System.out.print(node + " ");
         }
     }
