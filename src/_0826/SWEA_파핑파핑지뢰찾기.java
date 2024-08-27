@@ -9,7 +9,7 @@ import java.util.Queue;
 public class SWEA_파핑파핑지뢰찾기 {
     static int N, answer;
     static char[][] map;
-    static int[] dx = {-1, 0, 1, 1, 1, 0, -1, -1};
+    static int[] dx = {-1, 0, 1, 1, 1, 0, -1, -1};// 왼쪽 위부터 시계방향ㄷ
     static int[] dy = {-1, -1, -1, 0, 1, 1, 1, 0};
 
     public static void main(String[] args) throws IOException {
