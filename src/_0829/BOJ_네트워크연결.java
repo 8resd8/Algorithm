@@ -4,12 +4,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
-public class BOJ_1922 {
+public class BOJ_네트워크연결 {
     static int N, M, minCost;
     static int[] parents;
     static Edge[] edges;
+    static PriorityQueue<Edge> pq;
 
     static class Edge implements Comparable<Edge> {
         int start, end, cost;
@@ -30,6 +32,7 @@ public class BOJ_1922 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
         M = Integer.parseInt(br.readLine());
+        pq = new PriorityQueue<>();
         edges = new Edge[M];
 
         for (int i = 0; i < M; i++) {
@@ -38,10 +41,15 @@ public class BOJ_1922 {
             int end = Integer.parseInt(st.nextToken());
             int cost = Integer.parseInt(st.nextToken());
             edges[i] = new Edge(start, end, cost); // 간선 연결
+//            pq.add(new Edge(start, end, cost));
         }
-        Arrays.sort(edges); // 정렬해야함
+//        Arrays.sort(edges); // 정렬해야함
 
         makeSet(); // 초기화
+//        while (!pq.isEmpty()) {
+//            Edge edge = pq.
+//            if ()
+//        }
 
         for (Edge edge : edges) {
             if (union(edge.start, edge.end)) {
