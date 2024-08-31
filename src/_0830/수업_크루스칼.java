@@ -43,7 +43,7 @@ public class 수업_크루스칼 {
 
     static int find(int a) {
         if (parent[a] == a) return a;
-        return parent[a] = find(a);
+        return parent[a] = find(parent[a]);
     }
 
 

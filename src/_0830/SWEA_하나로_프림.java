@@ -22,14 +22,6 @@ public class SWEA_하나로_프림 {
         public int compareTo(Edge o) {
             return Double.compare(this.cost, o.cost);
         }
-
-        @Override
-        public String toString() {
-            return "Edge{" +
-                    "e=" + vertex +
-                    ", cost=" + cost +
-                    '}';
-        }
     }
 
     static double answer;
@@ -73,15 +65,15 @@ public class SWEA_하나로_프림 {
                 }
             }
 
-            prim(0); // 프림 시작
+            prim(0, 0); // 프림 시작
 
             System.out.println("#" + tc + " " + Math.round(answer));
 
         }
     }
 
-    private static void prim(int startVertex) {
-        pq.add(new Edge(startVertex, 0));
+    private static void prim(int startVertex, int startCost) {
+        pq.add(new Edge(startVertex, startCost));
         int count = 0;
 
         while (!pq.isEmpty()) {
@@ -93,8 +85,6 @@ public class SWEA_하나로_프림 {
             answer += current.cost;
             count++;
 
-            if (count == N -1) break; // MST완성되면 종료
-
             for (Edge edge : adj.get(current.vertex)) {
                 if (visited[edge.vertex]) {
                     continue;
@@ -102,7 +92,5 @@ public class SWEA_하나로_프림 {
                 pq.add(edge);
             }
         }
-
-        System.out.println("count = " + count);
     }
 }

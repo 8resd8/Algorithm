@@ -9,30 +9,23 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class SWEA_점심식사시간 {
-    static int N;
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer token;
     static StringBuilder sb;
     static int[][] field;
-    static int[] distFromA;     //처음 만난 계단은 A
-    static int[] distFromB;     //두번 째 만난 계단은 B
-    static int numberOfPeople;
-    static int ay, ax, by, bx;
-    static int answer;
-    static int[] selected;
+    static int numberOfPeople, N, ay, ax, by, bx, answer;
+    static int[] selected, distFromA, distFromB;
 
     public static void main(String[] args) throws IOException {
         int T = Integer.parseInt(br.readLine());
-        sb = new StringBuilder();
         for (int tc = 1; tc <= T; tc++) {
-            getInput();
+            init();
             makeSubSet(0);
-            sb.append("#" + tc + " " + answer + "\n");
+            sb.append("#").append(tc).append(" ").append(answer).append("\n");
         }
-        System.out.println(sb.toString());
+        System.out.println(sb);
     }
 
-    //
     private static void makeSubSet(int depth) {
         if (depth == numberOfPeople) {
             calculateMinute();
@@ -140,12 +133,10 @@ public class SWEA_점심식사시간 {
 
         minute += Math.max(remainA, remainB);
         answer = Math.min(answer, minute);
-
-
     }
 
-
-    private static void getInput() throws IOException {
+    private static void init() throws IOException {
+        sb = new StringBuilder();
         token = new StringTokenizer(br.readLine());
         N = Integer.parseInt(token.nextToken());
         field = new int[N][N];
