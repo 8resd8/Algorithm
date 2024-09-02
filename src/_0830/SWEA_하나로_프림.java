@@ -65,15 +65,15 @@ public class SWEA_하나로_프림 {
                 }
             }
 
-            prim(0, 0); // 프림 시작
+            prim(); // 프림 시작
 
             System.out.println("#" + tc + " " + Math.round(answer));
 
         }
     }
 
-    private static void prim(int startVertex, int startCost) {
-        pq.add(new Edge(startVertex, startCost));
+    private static void prim() {
+        pq.add(new Edge(0, 0));
         int count = 0;
 
         while (!pq.isEmpty()) {

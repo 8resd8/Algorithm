@@ -95,4 +95,8 @@ public class SWEA_하나로_크루스칼 { // 크루스칼
         if (parent[a] == a) return a;
         return parent[a] = find(parent[a]);
     }
+
+    private static boolean check(int a, int b) {
+        return find(a) == find(b);
+    }
 }

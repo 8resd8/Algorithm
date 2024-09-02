@@ -45,6 +45,7 @@ public class SWEA_프로세서연결하기 {
     }
 
     private static void connect(int index, int wireCount, int core) { // 끝까지 확인할 인덱스, 현재 전선, 현재 코어수
+
         if (index == cores.size()) { // 모든 코어를 확인했을때
             if (maxCore < core) { // 지금 코어가 더 많을때
                 minWire = wireCount; // 전선 길이 저장
@@ -57,6 +58,7 @@ public class SWEA_프로세서연결하기 {
 
         int x = cores.get(index)[0];
         int y = cores.get(index)[1];
+        connect(index + 1, wireCount, core); // 다음 코어 탐색
 
         for (int i = 0; i < 4; i++) { // 1개의 코어 방향
             int nowCount = 0;
@@ -83,7 +85,7 @@ public class SWEA_프로세서연결하기 {
 
             // 만약 한쪽 방향으로 쭉 갔는데 부딪히거나 코어에 닿아서 중지된 경우
             if (nowCount == 0) {
-                connect(index + 1, wireCount, core); // 다음 코어 탐색
+
                 continue;
             }
 
