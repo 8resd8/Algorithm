@@ -32,8 +32,8 @@ public class SWEA_홈방범서비스 {
 
 
 //             1. (0, 0) ~ (N-1, N-1) 까지 BFS
-//            if (tc != 7) continue;
             totalCount = 0;
+            if (tc != 7) continue;
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < N; j++) {
                     bfs(i, j);
@@ -41,10 +41,7 @@ public class SWEA_홈방범서비스 {
                 }
             }
 
-
-//        System.out.println("totalCount = " + totalCount);
             System.out.printf("#%d %d\n", tc, maxService);
-//            System.out.println("\n");
         }
 
     }
@@ -54,7 +51,6 @@ public class SWEA_홈방범서비스 {
         // 최대 거리가 1일때 운영비용, 수익률
         // 최대 거리가 2일때 운영비용, 수익률
         // 최대 거리가 3일때 운영비용, 수익률
-        // ... 음수가 되면 중단
         for (int distance = 1; distance <= N; distance++) {
 
             Queue<int[]> queue = new ArrayDeque<>();
@@ -78,9 +74,8 @@ public class SWEA_홈방범서비스 {
                 if (visited[x][y] == distance + 1) {
                     int cost = cost(distance);
                     if (costumerCost - cost < 0) break;
-
-//                    System.out.println(distance + ":  " + "거리: " + distance + " 운영비: " + cost + ", 수익 " + costumerCost + " 이득: " + (costumerCost - cost) + " 사람수: " + costumerCount);
-                    if (costumerCost > cost) { // 손해를 보지 않으면서
+                    System.out.println("x:" + x + ", y: " + y + ", " + distance + ":  " + "거리: " + distance + " 운영비: " + cost + ", 수익 " + costumerCost + " 이득: " + (costumerCost - cost) + " 사람수: " + costumerCount);
+                    if (costumerCost >= cost) { // 손해를 보지 않으면서
                         maxService = Math.max(maxService, costumerCount);
                     }
                     break;
