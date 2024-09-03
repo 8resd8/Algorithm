@@ -59,13 +59,23 @@ public class BOJ_최단거리 {
         while (!pq.isEmpty()) {
             Edge current = pq.poll();
 
-            if (dist[current.node] < current.cost) continue;
+            if (dist[current.node] < current.cost) {
+                continue;
+            }
+//            if (visited[current.node]) continue;
+//            visited[current.node] = true;
+
 
             for (Edge next : adj.get(current.node)) {
-                if (dist[next.node] > current.cost + next.cost) {
-                    dist[next.node] = current.cost + next.cost;
-                    pq.add(new Edge(next.node, dist[next.node]));
+//                if (visited[next.node]) continue;
+
+                if (dist[next.node] > dist[current.node] + next.cost) {
+//                    visited[next.node] = true;
+
+                    dist[next.node] = dist[current.node] + next.cost;
+                    pq.add(next);
                 }
+
             }
         }
 
@@ -74,6 +84,7 @@ public class BOJ_최단거리 {
             if (dist[i] == Integer.MAX_VALUE) {
                 sb.append("INF").append("\n");
             } else {
+//                System.out.println(dist[i]);
                 sb.append(dist[i]).append("\n");
             }
         }
