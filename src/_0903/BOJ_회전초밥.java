@@ -1,6 +1,5 @@
 package _0903;
 
-import java.awt.image.Kernel;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -23,30 +22,28 @@ public class BOJ_회전초밥 {
             arr[i] = Integer.parseInt(br.readLine());
         }
 
-        // 슬라이딩 윈도우 설정
-        int select = 1; // 쿠폰은 무조건 준다
+        int select = 1; // 쿠폰은 늘 한 종류를 지급한다
+        frequency[c]++;
         for (int i = 0; i < k; i++) {
-            if (frequency[arr[i]] == 0) {
-                select++;
-            }
+            if (frequency[arr[i]] == 0) select++;
             frequency[arr[i]]++;
         }
-
-        int count = select;
+        int chobob = select;
 
         for (int i = 1; i < N; i++) {
             frequency[arr[i - 1]]--;
-            if (frequency[arr[i - 1]] == 0) count--; // 앞에는 빼
+            if (frequency[arr[i - 1]] == 0) {
+                chobob--; // 앞 빼기
+            }
 
-            if (frequency[arr[ (i + k - 1) % N ]] == 0) count++;
+            if (frequency[arr[(i + k - 1) % N]] == 0) {
+                chobob++; // 뒤 추가
+            }
+
             frequency[arr[(i + k - 1) % N]]++;
-
-            select = Math.max(count, select);
+            select = Math.max(chobob, select);
         }
 
-
         System.out.println(select);
-
-
     }
 }
