@@ -19,24 +19,24 @@ public class BOJ_1로만들기 {
         visited[start] = true;
 
         while (!queue.isEmpty()) {
-            int[] current = queue.poll();
+            int[] cur = queue.poll();
 
-            if (current[0] == 1) {
-                return current[1];
+            if (cur[0] == 1) {
+                return cur[1];
             }
 
-            if (current[0] % 3 == 0 && !visited[current[0] / 3]) {
-                queue.add(new int[]{current[0] / 3, current[1] + 1});
-                visited[current[0] / 3] = true;
+            if (cur[0] % 3 == 0 && !visited[cur[0] / 3]) {
+                queue.add(new int[]{cur[0] / 3, cur[1] + 1});
+                visited[cur[0] / 3] = true;
             }
-            if (current[0] % 2 == 0 && !visited[current[0] / 2]) {
-                queue.add(new int[]{current[0] / 2, current[1] + 1});
-                visited[current[0] / 2] = true;
+            if (cur[0] % 2 == 0 && !visited[cur[0] / 2]) {
+                queue.add(new int[]{cur[0] / 2, cur[1] + 1});
+                visited[cur[0] / 2] = true;
             }
 
-            if (!visited[current[0] - 1]) {
-                queue.add(new int[]{current[0] - 1, current[1] + 1});
-                visited[current[0] - 1] = true;
+            if (!visited[cur[0] - 1]) {
+                queue.add(new int[]{cur[0] - 1, cur[1] + 1});
+                visited[cur[0] - 1] = true;
             }
         }
         return -1;
