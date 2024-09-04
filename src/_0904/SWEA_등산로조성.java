@@ -51,10 +51,10 @@ public class SWEA_등산로조성 {
 //                maxCount = count;
 //                return;
 //            }
+        maxCount = Math.max(maxCount, count);
 
-
-        System.out.println("x = " + x);
-        System.out.println("y = " + y);
+//        System.out.println("x = " + x);
+//        System.out.println("y = " + y);
 
         for (int i = 0; i < 4; i++) {
             int nx = x + dx[i];
@@ -66,7 +66,7 @@ public class SWEA_등산로조성 {
                 if (act) {
                     if (map[ny][nx] - map[y][x] < K) {
                         int temp = map[ny][nx];
-                        map[ny][nx] = map[y][x] + 1;
+                        map[ny][nx] = map[y][x] - 1;
                         act = false;
                         dfs(nx, ny, act, count + 1);
                         act = true;
