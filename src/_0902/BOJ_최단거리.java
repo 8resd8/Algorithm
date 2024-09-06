@@ -52,42 +52,34 @@ public class BOJ_최단거리 {
             adj.get(start).add(new Edge(end, cost)); // b로가는 가중치
         }
 
-        pq.add(new Edge(K, 0));
-        dist[K] = 0;
-        visited[K] = true;
-
-        while (!pq.isEmpty()) {
-            Edge current = pq.poll();
-
-            if (dist[current.node] < current.cost) {
-                continue;
-            }
-//            if (visited[current.node]) continue;
-//            visited[current.node] = true;
-
-
-            for (Edge next : adj.get(current.node)) {
-//                if (visited[next.node]) continue;
-
-                if (dist[next.node] > dist[current.node] + next.cost) {
-//                    visited[next.node] = true;
-
-                    dist[next.node] = dist[current.node] + next.cost;
-                    pq.add(next);
-                }
-
-            }
-        }
+        dijkstra();
 
         StringBuilder sb = new StringBuilder();
         for (int i = 1; i <= V; i++) {
             if (dist[i] == Integer.MAX_VALUE) {
                 sb.append("INF").append("\n");
             } else {
-//                System.out.println(dist[i]);
                 sb.append(dist[i]).append("\n");
             }
         }
         System.out.println(sb);
+    }
+
+    private static void dijkstra() {
+        pq.add(new Edge(K, 0));
+        dist[K] = 0;
+
+        while (!pq.isEmpty()) {
+            Edge current = pq.poll();
+
+            if (dist[current.node] < current.cost) continue;
+
+            for (Edge next : adj.get(current.node)) {
+                if (dist[next.node] > dist[current.node] + next.cost) {
+                    dist[next.node] = dist[current.node] + next.cost;
+                    pq.add(new Edge(next.node, dist[next.node]));
+                }
+            }
+        }
     }
 }
