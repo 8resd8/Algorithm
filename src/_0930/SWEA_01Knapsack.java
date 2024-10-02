@@ -59,10 +59,10 @@ public class SWEA_01Knapsack {
                 mono.add(new int[]{V, C});
 
                 for (int j = K; j >= V; j--) { // 5 3
-//                    System.out.printf("dp[%d] = Math.max(dp[%d], dp[%d - %d] + %d)\n", j, j, j, V, C);
+                    System.out.printf("dp[%d] = Math.max(dp[%d], dp[%d - %d] + %d)\n", j, j, j, V, C);
                     dp[j] = Math.max(dp[j], dp[j - V] + C); // 안넣는값, dp[1] ~ dp[V](기존값) + C(현재값)
                 }
-//                System.out.println(Arrays.toString(dp));
+                System.out.println(Arrays.toString(dp));
             }
 
             System.out.printf("#%d %d\n", tc, dp[K]);
@@ -79,3 +79,35 @@ public class SWEA_01Knapsack {
         }
     }
 }
+
+/**
+1
+4 5
+
+1 2
+dp[5] = Math.max(dp[5], dp[5 - 1] + 2)
+dp[4] = Math.max(dp[4], dp[4 - 1] + 2)
+dp[3] = Math.max(dp[3], dp[3 - 1] + 2)
+dp[2] = Math.max(dp[2], dp[2 - 1] + 2)
+dp[1] = Math.max(dp[1], dp[1 - 1] + 2)
+[0, 2, 2, 2, 2, 2]
+
+3 2
+dp[5] = Math.max(dp[5], dp[5 - 3] + 2)
+dp[4] = Math.max(dp[4], dp[4 - 3] + 2)
+dp[3] = Math.max(dp[3], dp[3 - 3] + 2)
+[0, 2, 2, 2, 4, 4]
+
+4 4
+dp[5] = Math.max(dp[5], dp[5 - 4] + 4)
+dp[4] = Math.max(dp[4], dp[4 - 4] + 4)
+[0, 2, 2, 2, 4, 6]
+
+2 3
+dp[5] = Math.max(dp[5], dp[5 - 2] + 3)
+dp[4] = Math.max(dp[4], dp[4 - 2] + 3)
+dp[3] = Math.max(dp[3], dp[3 - 2] + 3)
+dp[2] = Math.max(dp[2], dp[2 - 2] + 3)
+[0, 2, 3, 5, 5, 6]
+
+* */
